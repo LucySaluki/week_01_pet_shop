@@ -70,3 +70,21 @@ def customer_can_afford_pet(customer, pet):
         return True
     else:
         return False
+
+# Integration tests
+# Test 21 to 23 - sell pet to customer
+def sell_pet_to_customer(pet_shop, pet, customer):
+    if pet==None:
+        return
+    elif (customer_can_afford_pet(customer,pet)):
+        customer_pets=get_customer_pet_count(customer)
+        add_pet_to_customer(customer,pet)
+        new_customer_pets=get_customer_pet_count(customer)
+        pet_shop["admin"]["pets_sold"]=pet_shop["admin"]["pets_sold"]+(new_customer_pets-customer_pets)
+        get_pets_sold(pet_shop)
+        customer["cash"]=customer["cash"]-pet["price"]
+    else:
+        return 0
+    get_customer_cash(customer)
+    pet_shop["admin"]["total_cash"]=pet_shop["admin"]["total_cash"]+pet["price"]
+    get_total_cash(pet_shop)
