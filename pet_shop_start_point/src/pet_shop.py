@@ -15,3 +15,6 @@ def get_pets_sold(pet_shop):
     return pet_shop["admin"]["pets_sold"]
 
 # Test 6 - increase the number of pets_sold
+def increase_pets_sold(pet_shop, number_of_pets):
+    pet_shop["admin"]["pets_sold"]=pet_shop["admin"]["pets_sold"] + number_of_pets
+    return pet_shop["admin"]["pets_sold"]
